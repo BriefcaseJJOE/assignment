@@ -1,5 +1,5 @@
-import test
-import c 
+import func_script
+import character 
 unit = []
 rounds = 1
 player_units = []
@@ -9,12 +9,12 @@ ai_units = []
 def main():
     exit = "x"
     end = ""
-    ai_units = []
+    
     while exit != end:
         #select_player_units()
         num_unit = int(input("select number of units: "))
-        player_units = test.setup_player(num_unit)
-        ai_units = test.setup_ai(len(player_units))
+        player_units = func_script.setup_player(num_unit)
+        ai_units = func_script.setup_ai(len(player_units))
         '''
         
         setup_ai_units()
