@@ -20,45 +20,36 @@ class GameCharacter:
         else:
             self.setup_mage()
     
-
+    # setting up units
     def setup_warrior(self):
         self.type = "warrior"
         self.atk = random.randint(5,20)
         self.df = random.randint(1,10)
         
-    def get_attack(self):
-        return self.atk
-
     def setup_tanker(self):
         self.type = "tanker"
         self.atk = random.randint(1,10)
         self.df = random.randint(5,15)
         
-
-
     def setup_mage(self):
         self.type = "mage"
-        self.atk = random.randint(5,30)
+        self.atk = random.randint(20,30)
         self.df = random.randint(1,5)
         
 
     def attack(self,target):
         damage = self.atk - target.df + random.randint(-5, 10)
         target.hp -= damage
+        print(self.name+" did "+str(damage)+" damage")
+        
+        
 
     def __str__(self):
         text = self.type+" "+self.name+",hp:"+str(self.hp)
         text += ", atk:" + str(self.atk)+", df" + str(self.df)
         return text   
 
-
-
-
-    '''out put list of 
-        ai units == player units
-        ai units will be selected randomly
-        ai name prefix "AI(two digit)"
-
-    '''
-
+    def get_damage(self):
+        pass
+        
 
