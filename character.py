@@ -42,11 +42,14 @@ class GameCharacter:
     def attack(self,target):
         damage = self.atk - target.df + random.randint(-5, 10)
         # TODONE: implement fix for negative damage
-        if damage >= 1:
-            target.hp -= damage
+        if damage <= 0:
+            target.hp -= 1   
+            
         else:
-            target.hp -= 1    
+            target.hp -= damage
+             
         print(self.name+" did "+str(damage)+" damage")
+        print("\n")
         
         
 

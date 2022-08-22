@@ -30,27 +30,24 @@ def main():
         ai_units = fuc.setup_ai(len(player_units))
 
 
-        # update life on how many units player and ai have number of unit = number of life
-        player_life = len(player_units)
-        ai_life = len(ai_units)
-
-        #
+       #
         player_unit_to_atk = 0
         ai_unit_to_atk = 0
 
-        # keeping track of player unit hp and ai unit hp
-        php = player_units[player_unit].hp
-        ahp = ai_units[ai_unit].hp
+       
 
         #end loop when player or ai run out of units / life
-        while ai_life >= 1:
- 
+        while True:
+            
             fuc.clear_screen()
+            print(len(ai_units))
             
 
 
             #setting up turn base attack player go first
             if rounds % 2 == 1 :
+                
+                
                 #show selected units and ai units 
                 fuc.show_game_board(player_units,ai_units)
             
@@ -76,29 +73,42 @@ def main():
                 #process atk calculation
                 player_units[player_unit_to_atk].attack(ai_units[ai_unit_to_atk])
                 fuc.show_game_board(player_units,ai_units)
+
+                #if player unit die remove unit from list 
+                
+                if fuc.check_hp_is_zero(player_units) == True:
+
+                    dead_unit = fuc.dead_unit_index(player_units)
+                    player_units.pop(dead_unit)
+                
+                #check if player win
+                if len(ai_units)<= 0:
+                    print("player WIN")
+                    break
+
+                
+
             else:
+                
                 ai_units[random.randint(0,len(ai_units)-1)].attack(player_units[random.randint(0,len(ai_units)-1)])  
                 fuc.show_game_board(player_units,ai_units)  
 
-            
-            #show state of player and ai unit    
-            #show game state
-           
-            
-            #update hp state
-            php = player_units[player_unit].hp
-            ahp = ai_units[ai_unit].hp
-            
-            #if player unit die update life of player 
-            #and activate next unit 
-            # if php <= 0:
-                # player_life -= 1
-                # player_unit += 1
-            # elif ahp <= 0:
-                # ai_life -= 1
-                # ai_unit += 1
+                #if ai unit die remove unit from list 
+                
+                if fuc.check_hp_is_zero(ai_units) == True:
+
+                    dead_unit = fuc.dead_unit_index(ai_units)
+                    ai_units.pop(dead_unit)
+                #check if ai win
+                if len(player_units)<= 0:
+                    print("Ai WIN")
+                    break
 
 
+            
+            
+            
+            
             
             #print(ai_life)
             #print(player_life)

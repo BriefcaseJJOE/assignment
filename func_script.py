@@ -38,3 +38,21 @@ def show_game_board(player_units,ai_units):
     print("Ai units")
     update_ai_units(len(ai_units),ai_units)
     print("\n")
+
+def check_hp_is_zero(units):
+   
+    for i in range(len(units)):
+        hp = units[i].hp
+        if hp <= 0:
+            return True
+
+def dead_unit_index(units):
+   
+    for i in range(len(units)):
+        hp = units[i].hp
+        if hp <= 0:
+            return i
+
+
+
+    
