@@ -20,12 +20,21 @@ def setup_player(num_unit):
 
 def update_player_units(number_of_player_unit,player_units):
     for i in range(number_of_player_unit):
-            print(player_units[i].__str__())
+            print(player_units[i].__str__(),end=" / ")
 
 def update_ai_units(number_of_ai_unit,ai_units):
     for i in range(number_of_ai_unit):
-            print(ai_units[i].__str__())
+            print(ai_units[i].__str__(),end=" / ")
 
 
 def clear_screen():
     print("\n"*10)
+
+
+def show_game_board(player_units,ai_units):
+    print("Player unit")
+    update_player_units(len(player_units),player_units)
+    print("\n")
+    print("Ai units")
+    update_ai_units(len(ai_units),ai_units)
+    print("\n")

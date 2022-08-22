@@ -25,22 +25,27 @@ class GameCharacter:
         self.type = "warrior"
         self.atk = random.randint(5,20)
         self.df = random.randint(1,10)
+        self.exp = 0
         
     def setup_tanker(self):
         self.type = "tanker"
         self.atk = random.randint(1,10)
         self.df = random.randint(5,15)
-        
+        self.exp = 0
+
     def setup_mage(self):
         self.type = "mage"
         self.atk = random.randint(20,30)
         self.df = random.randint(1,5)
-        
+        self.exp = 0
 
     def attack(self,target):
         damage = self.atk - target.df + random.randint(-5, 10)
-        # TODO: implement fix for negative damage
-        target.hp -= damage
+        # TODONE: implement fix for negative damage
+        if damage >= 1:
+            target.hp -= damage
+        else:
+            target.hp -= 1    
         print(self.name+" did "+str(damage)+" damage")
         
         
