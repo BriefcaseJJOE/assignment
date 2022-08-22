@@ -30,7 +30,7 @@ def main():
         ai_units = fuc.setup_ai(len(player_units))
 
 
-       #
+       
         player_unit_to_atk = 0
         ai_unit_to_atk = 0
 
@@ -90,12 +90,12 @@ def main():
             if fuc.check_hp_is_zero(player_units) == True:
                 dead_unit = fuc.dead_unit_index(player_units)
                 player_units.pop(dead_unit)            
-                
-            
+
+
             elif fuc.check_hp_is_zero(ai_units) == True:
                 dead_unit = fuc.dead_unit_index(ai_units)
                 ai_units.pop(dead_unit)
-                
+
             #check if ai win
             if len(player_units)<= 0:
                 print("Ai WIN")
@@ -105,21 +105,13 @@ def main():
             if len(ai_units)<= 0:
                 print("player WIN")
                 break
-            
+
 
             
             rounds += 1
             p = str(input("press enter to continue:"))
             
-        '''
-        update game state
         
-        
-        check player or ai win
-        print event logs
-
-        
-        '''
         
         
         end = str(input("x to end"))   
