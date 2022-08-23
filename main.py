@@ -79,7 +79,7 @@ def main():
 
             else:
                 
-                ai_units[random.randint(0,len(ai_units)-1)].attack(player_units[random.randint(0,len(ai_units)-1)])  
+                ai_units[random.randint(0,len(ai_units)-1)].attack(player_units[random.randint(0,len(player_units)-1)])  
                 fuc.show_game_board(player_units,ai_units)  
 
                 

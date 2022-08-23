@@ -17,6 +17,8 @@ class GameCharacter:
             self.setup_warrior()
         elif char_type == "t":
             self.setup_tanker()
+        elif char_type == "dev":
+            self.setup_devil()
         else:
             self.setup_mage()
     
@@ -39,24 +41,48 @@ class GameCharacter:
         self.df = random.randint(1,5)
         self.exp = 0
 
+    def setup_devil(self):
+        self.type = "dev"
+        self.atk = random.randint(80,99)
+        self.df = random.randint(29,30)
+        self.exp = 0
+
     def attack(self,target):
         damage = self.atk - target.df + random.randint(-5, 10)
         # TODONE: implement fix for negative damage
+        exp = damage
+        
+        t_def = target.df 
+      
         if damage <= 0:
-            target.hp -= 1   
+            damage = 1 
+            exp = damage
+            self.exp += exp
+            target.exp += t_def
+          
             
         else:
             target.hp -= damage
-             
-        print(self.name+" did "+str(damage)+" damage")
-        print("\n")
+            self.exp += exp
+            target.exp += t_def
+            
+        if self.exp >= 100 :
+            self.exp -=100
+            self.rk +=1
+        elif target.exp >= 100 :
+            target.exp -= 100
+            target.rk +=1
+          
+        print(self.name+" did "+str(damage)+" damage to "+target.name)
+        print(self.name+" gained "+str(exp)+"exp")
+        print(str(target.name)+" gained "+str(t_def)+"exp from defending"+"\n")
         
         
 
     def __str__(self):
-        text = self.type+" "+self.name+",hp:"+str(self.hp)
-        text += ", atk:" + str(self.atk)+", df" + str(self.df)
-        return text   
+        text = self.type+" "+self.name+" "+"hp:"+str(self.hp)+"\n"
+        text += "atk:" + str(self.atk)+" "+ "def:" + str(self.df)+ "\n"+"exp:"+str(self.exp)+" lvl:"+str(self.rk)+"\n"+"\n"
+        return text 
 
     def get_damage(self):
         pass

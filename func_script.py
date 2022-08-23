@@ -20,11 +20,11 @@ def setup_player(num_unit):
 
 def update_player_units(number_of_player_unit,player_units):
     for i in range(number_of_player_unit):
-            print(player_units[i].__str__(),end=" / ")
+            print(player_units[i].__str__(),end=" ")
 
 def update_ai_units(number_of_ai_unit,ai_units):
     for i in range(number_of_ai_unit):
-            print(ai_units[i].__str__(),end=" / ")
+            print(ai_units[i].__str__(),end=" ")
 
 
 def clear_screen():
