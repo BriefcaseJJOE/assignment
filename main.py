@@ -59,14 +59,14 @@ def main():
                 player_unit_to_atk = int(input("select unit to attack (1 for 1st unit, 2 for 2nd unit etc...: ") )
                 player_unit_to_atk -= 1
                 #catch out of range input default to first unit
-                if player_unit_to_atk < 0 or player_unit_to_atk > len(player_units):
+                if player_unit_to_atk < 0 or player_unit_to_atk >= len(player_units):
                     player_unit_to_atk = 0
                 
                 
                 #player select which ai unit to attack
                 ai_unit_to_atk = int(input("select ai_unit to attack (1 for 1st unit, 2 for 2nd unit etc...: "))
                 ai_unit_to_atk -= 1
-                if ai_unit_to_atk < 0 or ai_unit_to_atk > len(ai_units):
+                if ai_unit_to_atk < 0 or ai_unit_to_atk >= len(ai_units):
                 #catch out of range input and default to first unit
                     ai_unit_to_atk = 0
 
