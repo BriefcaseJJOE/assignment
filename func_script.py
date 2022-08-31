@@ -35,7 +35,7 @@ def clear_screen():
 def show_game_board(player_units,ai_units):
     print("Player unit")
     update_player_units(len(player_units),player_units)
-    print("\n")
+    #print("\n")
     print("Ai units")
     update_ai_units(len(ai_units),ai_units)
     print("\n")
@@ -96,10 +96,11 @@ def input_checker_int_atk():
         except:     
             print("input error try again!")
 
+def create_log():
+    
+    with open("game_log.txt", "w") as f:
+        f = f.write("new game"+"\n")
 
 
-def save_game_logs():
-    with open("game_log.txt","a")as f:
-        
-        f = f.write()
-        
+    
+      
