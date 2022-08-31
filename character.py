@@ -24,20 +24,20 @@ class GameCharacter:
     # setting up units
     def setup_warrior(self):
         self.type = "warrior"
-        self.atk = random.randint(10,15)
-        self.df = random.randint(10,15)
+        self.atk = random.randint(17,20)
+        self.df = random.randint(7,10)
         self.exp = 0
         
     def setup_tanker(self):
         self.type = "tanker"
-        self.atk = random.randint(5,10)
-        self.df = random.randint(15,20)
+        self.atk = random.randint(15,19)
+        self.df = random.randint(9,10)
         self.exp = 0
 
     def setup_mage(self):
         self.type = "mage"
-        self.atk = random.randint(15,30)
-        self.df = random.randint(1,5)
+        self.atk = random.randint(19,25)
+        self.df = random.randint(5,10)
         self.exp = 0
 
     
@@ -50,11 +50,23 @@ class GameCharacter:
         exp = damage
         t_def = target.df 
 
-        target.hp -= damage
-        self.exp += exp
-        target.exp += t_def + (damage / 2)
+       
+        #bonus exp
+        if damage >= 11:
+            target.hp -= damage
+            exp = damage*1.2
+            self.exp += exp
+            t_def = + (damage / 2)
+            target.exp += t_def
+           
+        elif damage <= 10:
+            target.hp -= damage
+            exp = damage*1.5
+            self.exp += exp
+            t_def = + (damage / 2)
+            target.exp += t_def
         
-        
+
         #reset experince point 
         # and increase stats of units that level up  
         if self.exp >= 100 :

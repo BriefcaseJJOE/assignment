@@ -29,14 +29,14 @@ def update_ai_units(number_of_ai_unit,ai_units):
 
 
 def clear_screen():
-    print("\n"*10)
+    print("\n"*30)
 
 
 def show_game_board(player_units,ai_units):
-    print("Player unit")
+    print("@@@(Player unit)@@@")
     update_player_units(len(player_units),player_units)
     #print("\n")
-    print("Ai units")
+    print("@@@(Ai units)@@@")
     update_ai_units(len(ai_units),ai_units)
     print("\n")
 
@@ -99,24 +99,17 @@ def input_checker_int_atk():
 def roles_checker():
     answer = ""
     while True:
-        i = 0
-        answer = str(input('choose unit '+str(i+1)+' t / w / m = tanker / warrior / mage: '))
-        if answer != "t":
-            print("input error try again!")
-        elif answer != "w":
-            print("input error try again!")
-        elif answer != "m":
-            print("input error try again!")
-        else:
+        
+        answer = str(input('choose unit t / w / m = tanker / warrior / mage: '))
+        if answer == "t": 
             return answer
-                
-
+        elif answer == "w":
+            return answer
+        elif answer == "m":
+            return answer    
+        else:
+            print("input error try again!")
         
-
-        
-
-        
-        i+= 1
 
 def create_log():
     

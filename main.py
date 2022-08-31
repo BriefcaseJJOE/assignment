@@ -107,7 +107,7 @@ def main():
 
             
             rounds += 1
-            dialogue = str(input("press enter to continue:"))
+            end = str(input("press any key to continue:")).lower()
             
         
         
