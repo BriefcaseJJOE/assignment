@@ -20,7 +20,7 @@ def main():
         global rounds
         
         #setting up player units in a list
-        num_unit = int(input("select number of units: "))
+        num_unit = fuc.unit_checker()
         player_units = fuc.setup_player(num_unit)
 
         
@@ -54,7 +54,7 @@ def main():
                 #@@@@@@player can select a unit to atk the other unit@@@@@
 
                 #player select which of their own unit to attack
-                player_unit_to_atk = int(input("select unit to attack (1 for 1st unit, 2 for 2nd unit etc...: ") )
+                player_unit_to_atk = fuc.input_checker_int_select()
                 #correct from 1 indexing to 0 indexing
                 player_unit_to_atk -= 1
                 #catch out of range input default to first unit
@@ -63,7 +63,7 @@ def main():
                 
                 
                 #player select which ai unit to attack
-                ai_unit_to_atk = int(input("select ai_unit to attack (1 for 1st unit, 2 for 2nd unit etc...: "))
+                ai_unit_to_atk = fuc.input_checker_int_atk()
                 #correct from 1 indexing to 0 indexing
                 ai_unit_to_atk -= 1
                 if ai_unit_to_atk < 0 or ai_unit_to_atk >= len(ai_units):

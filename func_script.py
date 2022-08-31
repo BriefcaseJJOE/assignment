@@ -1,3 +1,4 @@
+
 import character 
 import random
 
@@ -63,7 +64,39 @@ def get_high_atk_unit(list):
             index_of_unit = i
     return index_of_unit
 
-    
+
+def unit_checker():
+    answer = ""
+    while isinstance(answer, int) == False:
+        try:
+            answer = int(input("select number of units: "))
+            return answer
+        
+        except:     
+            print("input error try again!")
+
+def input_checker_int_select():
+    answer = ""
+    while isinstance(answer, int) == False:
+        try:
+            answer = int(input("select unit to attack (1 for 1st unit, 2 for 2nd unit etc...: ") )
+            return answer
+        
+        except:     
+            print("input error try again!")
+
+def input_checker_int_atk():
+    answer = ""
+    while isinstance(answer, int) == False:
+        try:
+            answer = int(input("select ai_unit to attack (1 for 1st unit, 2 for 2nd unit etc...: "))
+            return answer
+        
+        except:     
+            print("input error try again!")
+
+
+
 def save_game_logs():
     with open("game_log.txt","a")as f:
         
