@@ -18,7 +18,7 @@ def main():
     
     while exit != end:
         global rounds
-        
+        fuc.create_log()
         #setting up player units in a list
         num_unit = fuc.unit_checker()
         player_units = fuc.setup_player(num_unit)
@@ -40,10 +40,6 @@ def main():
             fuc.clear_screen()
             
             
-
-
-
-
             #setting up turn base attack player go first
             if rounds % 2 == 1 :
                 
@@ -85,7 +81,15 @@ def main():
                 
 
                 
-                
+            #check if ai win
+            if len(player_units)<= 0:
+                print("Ai WIN")
+                break   
+            
+            #check if player win
+            if len(ai_units)<= 0:
+                print("player WIN")
+                break   
 
         #if player unit or ai die remove unit from list 
                 
@@ -98,15 +102,7 @@ def main():
                 dead_unit = fuc.dead_unit_index(ai_units)
                 ai_units.pop(dead_unit)
 
-            #check if ai win
-            if len(player_units)<= 0:
-                print("Ai WIN")
-                break   
-            
-            #check if player win
-            if len(ai_units)<= 0:
-                print("player WIN")
-                break
+           
 
 
             
@@ -116,5 +112,5 @@ def main():
         
         
         
-        end = str(input("x to end or any other key to play again"))   
+        end = str(input("x to end or any other key to play again")).lower() 
 main()
