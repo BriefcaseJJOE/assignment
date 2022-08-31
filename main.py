@@ -75,12 +75,14 @@ def main():
                 #process atk calculation
                 player_units[player_unit_to_atk].attack(ai_units[ai_unit_to_atk])
                 fuc.show_game_board(player_units,ai_units)
+                
             
 
             else:
                 
                 ai_units[fuc.get_high_atk_unit(ai_units)].attack(player_units[fuc.get_high_atk_unit(player_units)])  
                 fuc.show_game_board(player_units,ai_units)  
+                
 
                 
                 
@@ -114,5 +116,5 @@ def main():
         
         
         
-        end = str(input("x to end"))   
+        end = str(input("x to end or any other key to play again"))   
 main()

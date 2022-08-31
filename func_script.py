@@ -1,4 +1,4 @@
-import character
+import character 
 import random
 
 
@@ -64,3 +64,8 @@ def get_high_atk_unit(list):
     return index_of_unit
 
     
+def save_game_logs():
+    with open("game_log.txt","a")as f:
+        
+        f = f.write()
+        
