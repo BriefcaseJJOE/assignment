@@ -85,6 +85,7 @@ def input_checker_int_select():
         except:     
             print("input error try again!")
 
+
 def input_checker_int_atk():
     answer = ""
     while isinstance(answer, int) == False:
