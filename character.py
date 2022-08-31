@@ -1,4 +1,4 @@
-
+from datetime import datetime
 import random
 
 
@@ -17,62 +17,64 @@ class GameCharacter:
             self.setup_warrior()
         elif char_type == "t":
             self.setup_tanker()
-        elif char_type == "dev":
-            self.setup_devil()
+        
         else:
             self.setup_mage()
     
     # setting up units
     def setup_warrior(self):
         self.type = "warrior"
-        self.atk = random.randint(5,20)
-        self.df = random.randint(1,10)
+        self.atk = random.randint(10,15)
+        self.df = random.randint(10,15)
         self.exp = 0
         
     def setup_tanker(self):
         self.type = "tanker"
-        self.atk = random.randint(1,10)
-        self.df = random.randint(5,15)
+        self.atk = random.randint(5,10)
+        self.df = random.randint(15,20)
         self.exp = 0
 
     def setup_mage(self):
         self.type = "mage"
-        self.atk = random.randint(20,30)
+        self.atk = random.randint(15,30)
         self.df = random.randint(1,5)
         self.exp = 0
 
-    def setup_devil(self):
-        self.type = "dev"
-        self.atk = random.randint(80,99)
-        self.df = random.randint(29,30)
-        self.exp = 0
+    
 
     def attack(self,target):
-        damage = self.atk - target.df + random.randint(-5, 10)
-        # TODONE: implement fix for negative damage
+        # Getting the current date and time
+        dt = datetime.now()
+
+        damage = self.atk - target.df + random.randint(1, 10)
         exp = damage
-        
         t_def = target.df 
-      
-        if damage <= 0:
-            damage = 1 
-            exp = damage
-            self.exp += exp
-            target.exp += t_def
-          
-            
-        else:
-            target.hp -= damage
-            self.exp += exp
-            target.exp += t_def
-            
+
+        target.hp -= damage
+        self.exp += exp
+        target.exp += t_def + (damage / 2)
+        
+        
+        #reset experince point 
+        # and increase stats of units that level up  
         if self.exp >= 100 :
             self.exp -=100
-            self.rk +=1
+            self.rk += 1
+            self.atk += 5
+            self.df += 5
         elif target.exp >= 100 :
             target.exp -= 100
             target.rk +=1
-          
+            target.atk += 5
+            target.df += 5
+
+        #update game log
+        with open("game_log.txt","a")as f:
+        
+             f = f.write(self.name+" did "+str(damage)+" damage to "+target.name+"\n"+
+             self.name+" gained "+str(exp)+"exp"+"\n"+str(target.name)+" gained "+str(t_def)+"exp from defending"+"\n"+str(dt)+"\n"+"\n")
+
+        #print game state
         print(self.name+" did "+str(damage)+" damage to "+target.name)
         print(self.name+" gained "+str(exp)+"exp")
         print(str(target.name)+" gained "+str(t_def)+"exp from defending"+"\n")
