@@ -1,3 +1,4 @@
+
 import func_script as fuc
 import character 
 import random
@@ -13,10 +14,7 @@ def main():
     
     exit = "x"
     end = ""
-    ai_life = 0
-    player_life = 0
-    player_unit = 0
-    ai_unit = 0
+   
     
     while exit != end:
         global rounds
@@ -57,6 +55,7 @@ def main():
 
                 #player select which of their own unit to attack
                 player_unit_to_atk = int(input("select unit to attack (1 for 1st unit, 2 for 2nd unit etc...: ") )
+                #correct from 1 indexing to 0 indexing
                 player_unit_to_atk -= 1
                 #catch out of range input default to first unit
                 if player_unit_to_atk < 0 or player_unit_to_atk >= len(player_units):
@@ -65,6 +64,7 @@ def main():
                 
                 #player select which ai unit to attack
                 ai_unit_to_atk = int(input("select ai_unit to attack (1 for 1st unit, 2 for 2nd unit etc...: "))
+                #correct from 1 indexing to 0 indexing
                 ai_unit_to_atk -= 1
                 if ai_unit_to_atk < 0 or ai_unit_to_atk >= len(ai_units):
                 #catch out of range input and default to first unit
@@ -79,7 +79,7 @@ def main():
 
             else:
                 
-                ai_units[random.randint(0,len(ai_units)-1)].attack(player_units[random.randint(0,len(player_units)-1)])  
+                ai_units[fuc.get_high_atk_unit(ai_units)].attack(player_units[fuc.get_high_atk_unit(player_units)])  
                 fuc.show_game_board(player_units,ai_units)  
 
                 
@@ -109,7 +109,7 @@ def main():
 
             
             rounds += 1
-            p = str(input("press enter to continue:"))
+            dialogue = str(input("press enter to continue:"))
             
         
         

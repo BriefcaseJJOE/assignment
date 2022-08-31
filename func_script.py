@@ -54,5 +54,13 @@ def dead_unit_index(units):
             return i
 
 
+def get_high_atk_unit(list):
+    high = 0
+    index_of_unit = 0
+    for i in range(len(list)):
+        if high < list[i].atk:
+            high = list[i].atk
+            index_of_unit = i
+    return index_of_unit
 
     
