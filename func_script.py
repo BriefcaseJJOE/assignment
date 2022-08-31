@@ -14,7 +14,7 @@ def setup_player(num_unit):
     player_units = []
     for i in range(num_unit):
 
-        player_unit_type = str(input('choose unit '+str(i+1)+' t / w / m = tanker / warrior / mage: '))
+        player_unit_type = roles_checker()
         player_unit_name = str(input("give your unit a name: "))
         player_units.append(character.GameCharacter(player_unit_type,player_unit_name))
     return player_units    
@@ -95,6 +95,28 @@ def input_checker_int_atk():
         
         except:     
             print("input error try again!")
+
+def roles_checker():
+    answer = ""
+    while True:
+        i = 0
+        answer = str(input('choose unit '+str(i+1)+' t / w / m = tanker / warrior / mage: '))
+        if answer != "t":
+            print("input error try again!")
+        elif answer != "w":
+            print("input error try again!")
+        elif answer != "m":
+            print("input error try again!")
+        else:
+            return answer
+                
+
+        
+
+        
+
+        
+        i+= 1
 
 def create_log():
     
