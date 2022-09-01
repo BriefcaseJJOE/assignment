@@ -88,14 +88,14 @@ class GameCharacter:
 
         #print game state
         print(self.name+" did "+str(damage)+" damage to "+target.name)
-        print(self.name+" gained "+str(exp)+"exp")
-        print(str(target.name)+" gained "+str(t_def)+"exp from defending"+"\n")
+        print(self.name+" gained "+str("{:.0f}".format(exp))+"exp")
+        print(str(target.name)+" gained "+str("{:.0f}".format(t_def))+"exp from defending"+"\n")
         
         
 
     def __str__(self):
-        text = self.type+" "+self.name+" "+"hp:"+str(self.hp)+"\n"
-        text += "atk:" + str(self.atk)+" "+ "def:" + str(self.df)+ "\n"+"exp:"+str(self.exp)+" lvl:"+str(self.rk)+"\n"+"\n"
+        text = self.type+" "+self.name+" "+"hp:"+str("{:.0f}".format(self.hp))+"\n"
+        text += "atk:" + str(self.atk)+" "+ "def:" + str(self.df)+ "\n"+"exp:"+str("{:.0f}".format(self.exp))+" lvl:"+str(self.rk)+"\n"+"\n"
         return text 
 
     def get_damage(self):

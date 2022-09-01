@@ -81,15 +81,7 @@ def main():
                 
 
                 
-            #check if ai win
-            if len(player_units)<= 0:
-                print("Ai WIN")
-                break   
-            
-            #check if player win
-            if len(ai_units)<= 0:
-                print("player WIN")
-                break   
+           
 
         #if player unit or ai die remove unit from list 
                 
@@ -102,15 +94,25 @@ def main():
                 dead_unit = fuc.dead_unit_index(ai_units)
                 ai_units.pop(dead_unit)
 
-           
+             #check if ai win
+            if len(player_units)<= 0:
+                print("Ai WIN")
+                break   
+            
+            #check if player win
+            if len(ai_units)<= 0:
+                print("player WIN")
+                break   
 
 
             
             rounds += 1
-            end = str(input("press any key to continue:")).lower()
+            dialog = str(input("press any key to continue:")).lower()
             
         
         
         
         end = str(input("x to end or any other key to play again")).lower() 
-main()
+
+if __name__ == '__main__':
+    main()
