@@ -3,6 +3,16 @@ import func_script as fuc
 import character 
 import random
 
+# logging
+import logging
+import logging.handlers
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+handler = logging.handlers.RotatingFileHandler('./game_log.txt')
+formatter = logging.Formatter('%(asctime)s : %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+
 
 rounds = 1
 player_units = []
@@ -18,7 +28,9 @@ def main():
     
     while exit != end:
         global rounds
-        fuc.create_log()
+        
+        logger.info('new game started.')
+
         #setting up player units in a list
         num_unit = fuc.unit_checker()
         player_units = fuc.setup_player(num_unit)

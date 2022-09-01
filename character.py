@@ -1,10 +1,19 @@
-from datetime import datetime
 import random
+
+# logging
+import logging
+import logging.handlers
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+handler = logging.handlers.RotatingFileHandler('./game_log.txt')
+formatter = logging.Formatter('%(asctime)s : %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 
 
 class GameCharacter:
-    def __init__(self,char_type,char_name):
+    def __init__(self,char_type,char_name,belongs_to=''):
         self.type = ""
         self.name = char_name
         self.hp = 100
@@ -20,6 +29,14 @@ class GameCharacter:
         
         else:
             self.setup_mage()
+
+        if belongs_to == 'player':
+            logger.info('player set up ' + char_type.upper() + ' type character "' + char_name + '"')
+        else:
+            logger.info('AI set up ' + char_type.upper() + ' type character "' + char_name + '"')
+        logger.info('(' + char_name + ') atk : ' + str(self.atk))
+        logger.info('(' + char_name + ') df : ' + str(self.df))
+        logger.info('(' + char_name + ') exp : ' + str(self.exp))
     
     # setting up units
     def setup_warrior(self):
@@ -43,9 +60,6 @@ class GameCharacter:
     
 
     def attack(self,target):
-        # Getting the current date and time
-        dt = datetime.now()
-
         damage = self.atk - target.df + random.randint(1, 10)
         exp = damage
         t_def = target.df 
@@ -85,10 +99,9 @@ class GameCharacter:
             target.df += 5
 
         #update game log
-        with open("game_log.txt","a")as f:
-        
-             f = f.write(self.name+" did "+str(damage)+" damage to "+target.name+"\n"+
-             self.name+" gained "+str("{:.0f}".format(exp))+"exp"+"\n"+str(target.name)+" gained "+str("{:.0f}".format(t_def))+"exp from defending"+"\n"+str(dt)+"\n"+"\n")
+        logger.info(self.name + " did " + str(damage) + " damage to " + target.name)
+        logger.info(self.name + " gained " + str("{:.0f}".format(exp)) + "exp")
+        logger.info(str(target.name) + " gained " + str("{:.0f}".format(t_def)) + "exp from defending")
 
         #print game state
         print(self.name+" did "+str(damage)+" damage to "+target.name)

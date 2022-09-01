@@ -1,4 +1,3 @@
-
 import character 
 import random
 
@@ -16,7 +15,7 @@ def setup_player(num_unit):
 
         player_unit_type = roles_checker()
         player_unit_name = str(input("give your unit a name: "))
-        player_units.append(character.GameCharacter(player_unit_type,player_unit_name))
+        player_units.append(character.GameCharacter(player_unit_type,player_unit_name,belongs_to='player'))
     return player_units    
 
 def update_player_units(number_of_player_unit,player_units):
@@ -109,13 +108,6 @@ def roles_checker():
             return answer    
         else:
             print("input error try again!")
-        
-
-def create_log():
-    
-    with open("game_log.txt", "w") as f:
-        f = f.write("new game"+"\n")
-
 
     
       
