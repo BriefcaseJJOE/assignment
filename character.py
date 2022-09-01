@@ -50,7 +50,8 @@ class GameCharacter:
         exp = damage
         t_def = target.df 
 
-       
+        
+
         #bonus exp
         if damage >= 11:
             target.hp -= damage
@@ -66,6 +67,9 @@ class GameCharacter:
             t_def = + (damage / 2)
             target.exp += t_def
         
+        #for negative health
+        if target.hp <=0:
+            target.hp = 0
 
         #reset experince point 
         # and increase stats of units that level up  
