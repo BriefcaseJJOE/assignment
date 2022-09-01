@@ -123,7 +123,7 @@ def main():
             
         
         
-        
+        rounds = 1
         end = str(input("x to end or any other key to play again:")).lower() 
 
 if __name__ == '__main__':
