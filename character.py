@@ -88,7 +88,7 @@ class GameCharacter:
         with open("game_log.txt","a")as f:
         
              f = f.write(self.name+" did "+str(damage)+" damage to "+target.name+"\n"+
-             self.name+" gained "+str(exp)+"exp"+"\n"+str(target.name)+" gained "+str(t_def)+"exp from defending"+"\n"+str(dt)+"\n"+"\n")
+             self.name+" gained "+str("{:.0f}".format(exp))+"exp"+"\n"+str(target.name)+" gained "+str("{:.0f}".format(t_def))+"exp from defending"+"\n"+str(dt)+"\n"+"\n")
 
         #print game state
         print(self.name+" did "+str(damage)+" damage to "+target.name)
