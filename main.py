@@ -112,7 +112,7 @@ def main():
         
         
         
-        end = str(input("x to end or any other key to play again")).lower() 
+        end = str(input("x to end or any other key to play again:")).lower() 
 
 if __name__ == '__main__':
     main()
