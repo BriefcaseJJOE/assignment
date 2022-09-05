@@ -63,24 +63,32 @@ class GameCharacter:
         damage = self.atk - target.df + random.randint(1, 10)
         exp = damage
         t_def = target.df 
-
+        coin = 0
         
 
-        #bonus exp
+        #bonus exp and coins
         if damage >= 11:
+            #damage
             target.hp -= damage
+            #bonus exp 
             exp = damage*1.2
             self.exp += exp
+            #exp from def
             t_def = + (damage / 2)
             target.exp += t_def
-           
+            #coins
+            coin = exp
         elif damage <= 10:
+            #damage
             target.hp -= damage
+            #bonus exp 
             exp = damage*1.5
             self.exp += exp
+            #exp from def
             t_def = + (damage / 2)
             target.exp += t_def
-        
+            #coins
+            coin = exp
         #for negative health
         if target.hp <=0:
             target.hp = 0
@@ -109,14 +117,14 @@ class GameCharacter:
         print(str(target.name)+" gained "+str("{:.0f}".format(t_def))+"exp from defending"+"\n")
         
         
+        
 
     def __str__(self):
         text = self.type+" "+self.name+" "+"hp:"+str("{:.0f}".format(self.hp))+"\n"
-        text += "atk:" + str(self.atk)+" "+ "def:" + str(self.df)+ "\n"+"exp:"+str("{:.0f}".format(self.exp))+" lvl:"+str(self.rk)+"\n"+"\n"
+        text += "atk:" + str(self.atk)+" "+ "def:" + str(self.df)+ "\n"+"exp:"+str("{:.0f}".format(self.exp))+" lvl:"+str(self.rk)+"\n"
         return text 
 
-    def get_damage(self):
-        pass
+    
         
 
 

@@ -17,8 +17,8 @@ logger.addHandler(handler)
 rounds = 1
 player_units = []
 ai_units = []
-
-
+player_coins = 0
+ai_coins = 0
 
 def main():
     
@@ -27,6 +27,8 @@ def main():
    
     
     while exit != end:
+        # global ai_coins
+        # global player_coins
         global rounds
         
         logger.info('new game started.')
@@ -48,9 +50,13 @@ def main():
 
         #end loop when player or ai run out of units / life
         while True:
+            player_coins = 0
+            ai_coins = 0 
             
             fuc.clear_screen()
-            
+            if ai_coins > 199:
+                fuc.setup_ai(1)
+
             
             #setting up turn base attack player go first
             if rounds % 2 == 1 :
@@ -58,7 +64,6 @@ def main():
                 
                 #show selected units and ai units 
                 fuc.show_game_board(player_units,ai_units)
-            
                 #@@@@@@player can select a unit to atk the other unit@@@@@
 
                 #player select which of their own unit to attack
@@ -88,7 +93,7 @@ def main():
 
             else:
                 
-                ai_units[fuc.get_high_atk_unit(ai_units)].attack(player_units[fuc.get_high_atk_unit(player_units)])  
+                ai_units[fuc.get_high_atk_unit(ai_units)].attack(player_units[fuc.get_high_atk_unit(player_units)]) 
                 fuc.show_game_board(player_units,ai_units)  
                 
 

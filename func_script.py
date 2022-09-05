@@ -34,7 +34,7 @@ def clear_screen():
 def show_game_board(player_units,ai_units):
     print("@@@( Player unit )@@@")
     update_player_units(len(player_units),player_units)
-    #print("\n")
+    print("\n")
     print("@@@( Ai unit )@@@")
     update_ai_units(len(ai_units),ai_units)
     print("\n")
@@ -114,6 +114,3 @@ def roles_checker():
             return answer    
         else:
             print("input error try again!")
-
-    
-      
