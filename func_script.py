@@ -68,7 +68,11 @@ def unit_checker():
     answer = ""
     while isinstance(answer, int) == False:
         try:
-            answer = int(input("select number of units: "))
+            answer = int(input("select number of units capped at 3: "))
+            if answer > 3 :
+                answer = 3
+            elif answer < 1 :
+                answer = 1    
             return answer
         
         except:     
