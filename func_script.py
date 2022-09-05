@@ -71,8 +71,10 @@ def unit_checker():
             answer = int(input("select number of units capped at 3: "))
             if answer > 3 :
                 answer = 3
+                print("selected more than 3 defaulted to 3 units")  
             elif answer < 1 :
-                answer = 1    
+                answer = 1 
+                print("selected less than 1 defaulted to 1 unit")   
             return answer
         
         except:     
